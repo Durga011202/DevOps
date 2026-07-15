@@ -1,0 +1,5 @@
+ /bin/python
+
+
+print("Green plants, Yellow plants, Brown plants")
+
