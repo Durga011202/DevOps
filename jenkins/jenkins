@@ -20,6 +20,8 @@ pipeline{
          stage('deploy'){
             steps{
                 sh '''
+                      ls ${WORKSPACE}
+                       python ${WORKSPACE}/python/hello.py
                        echo "deployment is completed"
                    '''
             }
