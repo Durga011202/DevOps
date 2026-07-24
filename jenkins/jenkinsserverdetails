@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Get Jenkins Controller Details') {
+            steps {
+                script {
+                    echo "Jenkins URL: ${env.JENKINS_URL}"
+                    echo "Node Name: ${env.NODE_NAME}"
+                    echo "Build Number: ${env.BUILD_NUMBER}"
+                    echo "Job Name: ${env.JOB_NAME}"
+
+                    if (env.NODE_NAME == 'built-in' || env.NODE_NAME == 'master') {
+                        echo "This build is running on the Jenkins controller."
+                    } else {
+                        echo "This build is running on agent: ${env.NODE_NAME}"
+                    }
+
+                    sh '''
+                        echo "Hostname: $(hostname)"
+                        echo "IP Address:"
+                        hostname -I || ip addr
+                        echo "Operating System:"
+                        uname -a
+                        echo "Current User:"
+                        whoami
+                    '''
+                }
+            }
+        }
+    }
+}
