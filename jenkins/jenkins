@@ -4,14 +4,14 @@ pipeline{
      stages{
          stage('stage1'){
             steps{
-                bat '''
+                sh '''
                       echo "stage1 is completed"
                    '''
             }
          }
          stage('stage2'){
                steps{
-                   bat '''
+                   sh '''
                         echo "stage2 is completed"
                       '''
                }
@@ -19,10 +19,10 @@ pipeline{
          }
          stage('deploy'){
             steps{
-                bat '''
+                sh '''
                       ls ${WORKSPACE}
                        python3 ${WORKSPACE}/python/hello.py
-                       echo "deployment is completed"
+                       echo "deployment is completed 'hostname`"
                    '''
             }
          }
