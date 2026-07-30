@@ -1,7 +1,7 @@
 pipeline{
-     agent {
-     label 'node1'
-     }stages{
+     agent (
+        label 'node1'
+     )stages{
            stage('stage1'){
                  steps{
                       sh '''
